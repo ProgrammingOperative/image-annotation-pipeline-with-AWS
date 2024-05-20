@@ -1,0 +1,26 @@
+# Navigate to the directory containing lambda_function.py
+cd ./lambda_package/
+
+# Create a virtual environment
+python3 -m venv lambda_venv
+
+# Activate the virtual environment
+source lambda_venv/bin/activate
+
+# Install required packages
+pip install boto3 kafka-python
+
+# Create a directory for the deployment package
+mkdir package
+
+# Copy installed packages to the deployment package directory
+cp -r venv/lib/python3.*/site-packages/* package/
+
+# Copy the lambda_function.py to the package directory
+cp lambda_function.py package/
+
+# Navigate to the package directory
+cd package
+
+# Create the zip file
+zip -r9 ../lambda_function.zip .
