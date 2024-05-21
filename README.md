@@ -28,7 +28,7 @@ This project implements a comprehensive image annotation pipeline leveraging AWS
 ### Built With
 
 Tech Stack used in this project
-* [Apache Airflow](https://jquery.com)
+* [Apache Airflow](https://airflow.apache.org/)
 * [kafka](https://kafka.apache.org/quickstart)
 * [AWS](https://aws.amazon.com/)
 * [Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/)
