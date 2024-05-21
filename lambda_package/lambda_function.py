@@ -5,7 +5,7 @@ from kafka import KafkaProducer
 from time import sleep
 
 # Kafka broker's IP address and port
-bootstrap_servers = '3.141.4.193:9092'
+bootstrap_servers = '3.144.237.39:9092'
 
 # Create a Kafka producer
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)

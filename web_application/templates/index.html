@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Label Image</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .label-section {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function fetchImage() {
+            fetch('/get_image')
+                .then(response => response.json())
+                .then(data => {
+                    const imageBase64 = data.image;
+                    const imgElement = document.getElementById('image_preview');
+                    imgElement.src = 'data:image/png;base64,' + imageBase64;
+                    document.getElementById('image_base64').value = imageBase64;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function sendImageAndLabel() {
+            const imageBase64 = document.getElementById('image_base64').value;
+            const label = document.getElementById('label').value;
+
+            const payload = JSON.stringify({
+                image: imageBase64,
+                label: label
+            });
+
+            fetch('/label_image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: payload
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.status);
+                fetchImage();  // Fetch next image after labeling
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        window.onload = function() {
+            fetchImage();  // Fetch the first image when the page loads
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Label Image</h1>
+        <img id="image_preview" class="image-preview" src="" alt="Image to label">
+        <div class="label-section">
+            <input type="text" id="label" placeholder="Enter label" required>
+            <input type="hidden" id="image_base64">
+            <button type="button" onclick="sendImageAndLabel()">Submit</button>
+        </div>
+    </div>
+</body>
+</html>
