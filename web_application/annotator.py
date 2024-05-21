@@ -68,6 +68,7 @@ def label_image():
         'label': label
     }
     producer.send(producer_topic, value=json.dumps(message).encode('utf-8'))
+    print("Message and Label sent successfully")
     producer.flush()
     
     return jsonify({'status': 'Image and label sent successfully!'})
