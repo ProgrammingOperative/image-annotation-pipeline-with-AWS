@@ -65,5 +65,34 @@ For security purposes, the configurations directory is important for masking of 
     LABELED_IMAGE_BUCKET_NAME=XXXXXXXXXXXXXXX
 
    ```
+### AWS: 
+  We first need the cloud infrastructure span
+   ```sh
+   - First, we shall create two s3 buckets that shall hold our initial image upload and another for the labeled one
+   - Second, We shall spin up an ec2 and install kafka 
+   - We shall then setup our lambda environment to trigger image transfer once an image is uploaded to s3
+
+   ```
+### WEB SERVER
+  This is the flask application that we shall spin up to facilitate the viewing and actual image annotation
+   ```sh
+   cd web_application
+   flask --app annotator run
+
+
+   Navigate to `http://localhost:5000` on the browser once you have your server started
+
+   ```
+
+### Airflow: 
+  Airflow is used for aurchestration and automation. This will automate thev uploading of our images files and shall act as the trigger for this whole pipeline
+   ```sh
+   Navigate to `http://localhost:8080/` on the browser once you have your airflow span
+   use `admin` for username
+   use `admin` for password
+
+   If not the two credentials above, you can check your terminal once airflow is span, the credentials shall be provided there
+   ```
+
 
  TO BE CONTINUED...
