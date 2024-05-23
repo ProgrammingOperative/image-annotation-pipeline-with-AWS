@@ -25,7 +25,7 @@ dag = DAG(
 )
 
 def run_script():
-    script_path = '/home/tito/Desktop/Data_Engineering_2024/Projects/Image_Annotation_Data_Pipeline/image-annotation-pipeline-with-AWS/dags/image_upload_dag.py'
+    script_path = 'path/to/your/dags/image_upload_dag.py'
     try:
         result = subprocess.run(['python', script_path], capture_output=True, text=True)
         logging.info(result.stdout)

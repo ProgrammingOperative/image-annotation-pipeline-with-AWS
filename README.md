@@ -65,6 +65,16 @@ For security purposes, the configurations directory is important for masking of 
     LABELED_IMAGE_BUCKET_NAME=XXXXXXXXXXXXXXX
 
    ```
+
+### Data directory setup: 
+Within this directory is where we shall have our image data stored on-premise. Just to be align with the notebooks I shall have my data directory structure build as below. Assuming I am in the root directory
+   ```sh
+    mkdir data
+    cd data
+    mkdir recived_images to_Send
+   ```
+You can however have your data directory structure as you wish
+
 ### AWS: 
   We first need the cloud infrastructure span
    ```sh
