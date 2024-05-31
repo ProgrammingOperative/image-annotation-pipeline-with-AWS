@@ -93,9 +93,22 @@ You can however have your data directory structure as you wish
    Navigate to `http://localhost:5000` on the browser once you have your server started
 
    ```
+### Notebooks: 
+  The provided notebooks would serve as test environmment before orchestration using `Airflow`. They are used once your kafka cluster is up and running in the AWS EC2.
+
+  `kafka_producer.ipynb` - Is used to test whether production to a topic in a remote kafka cluster can be done successfully
+
+  `file_upload.ipynb` - Used to test the lambda function for production to Kafka. It uploads unlabelled data from local machine to `AWS S3`, triggering the lambda function
+
+  `Kafka_consumer.ipynb` - Tests whether the produced data to kafka can be consumed, and that the data can be regenerated to the proper format. Consumed image binary files are consumed and regenerated back to their original format and saved in the provided directory.
+
+  `labeled_image_s3_upload` - Test the upload of the labeled image back to kafka
 
 ### Airflow: 
-  Airflow is used for aurchestration and automation. This will automate thev uploading of our images files and shall act as the trigger for this whole pipeline
+  Airflow is used for aurchestration and automation. This will automate the uploading of our image files and shall act as the trigger for this whole pipeline
+
+  This is done by first uploading the `image_upload_dag.py` script in the `dags` directory within the airflow's `dag` folder then access the Airflow UI as provided below to trigger that dag - Which orchestrates the whole pipeline
+
    ```sh
    Navigate to `http://localhost:8080/` on the browser once you have your airflow span
    use `admin` for username
@@ -105,4 +118,4 @@ You can however have your data directory structure as you wish
    ```
 
 
- TO BE CONTINUED...
+### TO BE CONTINUED
